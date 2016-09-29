@@ -1,0 +1,146 @@
+Oops concepts exercised Programs and Interview Question and answer
+using System;
+
+public class Employee
+{
+ 	public string firstname;
+    public string lastname;
+    public string email;
+     public Employee()
+     {
+         Console.WriteLine("Base class Constructor");
+     }
+    public void Printfullnamebase()
+    {
+        Console.WriteLine("base class called");
+    }
+    public void Printfullname()
+    {
+        Console.WriteLine(firstname+" "+lastname);
+    }
+    
+}
+public class FulltimeEmp: Employee
+{
+   public int yearlysalary;
+    
+    
+}
+public class ParttimeEmp: Employee
+{
+	public int hourlysalary;
+    public void DisplayPartTime()
+    {
+        Console.WriteLine("child method");
+    }
+    public ParttimeEmp()
+    {
+        Console.WriteLine("Child class constructor called");
+    }
+}
+public class Program
+{
+   public static void Main()
+   {
+      // write your code here
+        Console.WriteLine("Day1 : Inheritance");
+        Console.WriteLine("");
+       	//Day 1 : Inheritance
+      	
+       ParttimeEmp pte =  new ParttimeEmp();
+       pte.firstname="Yogesh";
+       	pte.lastname= "Kolhe";
+       	//pte.hourlysalary=3000;
+       	pte.Printfullname();
+        pte.DisplayPartTime();
+  	
+        pte.Printfullnamebase();
+       
+       
+   }
+}
+
+output:  Day1: Inheritance
+        Base class constructor called
+        derived class constructor called
+        Yogesh Kolhe
+        child method
+        base class called
+        
+C# Interview Questions TopicWise
+Inheritance
+  1.what is inheritance ?
+The method of constructing one class from another is called Inheritance.The derived class inherits all the properties and methods from the base class and it can add its own methods also.
+2.Are constructors and destructors inherited ?
+No
+
+3.Advantages of Inheritance.
+a)Code re usability-Public and protected methods can be used in derived classes
+b) Extensibility- base class can be extended as per business logic in derived classes.
+c)Polymorphism
+
+4.What are diff types of inheritance?
+a) Single inheritance --Class B is derived from base class A. A->B
+b)Multiple inheritance ---Class C derives from both A and B.  A,B->C
+c)Multilevel inheritance--Class B derives from Class base class A.class C derives from B.  A->B->C 
+d)Hybrid inheritance --class B and C derives from same base class A.  A->B,C
+
+5.Is multiple inheritance possible in C#.Why?
+No. because
+a)Its not supported by CLR since its support many diff language and not all languages can have multiple inheritance concept. 
+b)Because of the complexities involved where method name can clash when two diff classes have same method name.This is resolved by pointers in C++ but its not possible in c#.
+
+
+Instead interfaces can be used to achieve the same.
+
+
+6.Is circular inheritance possible. like A:B ,B:A ?
+No
+
+
+7.How do you prevent a class from being inherited ?
+a)Make the class as sealed.
+b)Add private constructors to the class.
+
+
+8. Can derive class have public modifier when there are no modifiers specified on the base class?
+No. bc derived class cannot be more accessible that base class.
+
+
+9.why c# does not support inheritance by structure?
+Because structures are mainly used for light weight process. And if they are allowed to be inherited then they have to act as base class which is not possible as they are value types.
+
+
+10.Does structs inherit from interfaces?
+Yes structs can inherit only from interface.
+
+
+11.What do you mean by sealed keyword ?
+If you mark a class as sealed it means that you cannot inherit from it but you can create objects of that class.
+
+
+12.can you mark method as sealed ?
+Yes.But for a method to be marked as sealed you need to have override keyword also.
+
+
+
+13.what do you mean by upcasting and downcasting ?
+class DerivedClass :BaseClass
+
+Upcasting--assigning a derived class object to a base class.This is implicit.
+BaseClass b= new DerivedClass.
+
+
+Downcasting--assigning baseclass object to derived class. This is explicit and it throws run time error .
+a)BaseClass b = new BaseClass()
+   DerivedClass d= b  //will give compile time error.
+  
+b) d=(DerivedClass)b  //will give runtime error.
+
+
+c)b=d;
+   d=(DerivedClass)b;
+   d.method()             //will always call derivedclass method
+
+   //there is no point in taking so much of pain and using this kind of code !!!
+
